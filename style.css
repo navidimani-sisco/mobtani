@@ -1,0 +1,12 @@
+/*
+[lang = "fa"]			
+[lang = "en"]
+*/
+:lang(fa){
+	direction:	rtl;
+	text-align:	right;
+}
+:lang(en){
+	direction:	ltr;
+	text-align:	left;
+}
