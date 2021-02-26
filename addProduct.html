@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang = "fa">
+	<head>
+		<meta charset = "utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>آکادمی | افزودن محصول</title>
+		
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.rtl.min.css" integrity="sha384-4dNpRvNX0c/TdYEbYup8qbjvjaMrgUPh+g4I03CnNtANuv+VAvPL6LqdwzZKV38G" crossorigin="anonymous">
+		
+		<link href = "style.css" rel = "stylesheet">
+	</head>
+	<body class = "container">
+		<header></header>
+		<main>
+			<h1>تماس با ما</h1>
+			<form action = "addProduct.php" method = "post" enctype = "multipart/form-data">	
+				<h3>مشخصات دوره</h3>
+					<label for = "name">نام دوره</label>
+				<section class = "input-group">
+					<input type = "text" name = "name" id = "name" class="form-control" required>
+				</section>
+				
+				<label for = "price">قیمت</label>
+				<span class = "input-group">
+					<input type = "number" name = "price" id = "price" class="form-control" min = "0" step = "1000" required>
+					<span class = "input-group-text">تومان</span>
+				</span><br>
+				<label for = "description">توضیحات </label>
+				<textarea name = "description" id = "description" class="form-control"></textarea><br>
+				
+				<label for = "file">تصویر دوره</label>
+				<input type = "file" name = "productPicture" id = "file" class="form-control"><br>
+				
+				<h3>زمان برگزاری</h3>
+				<label for = "weekday">روز هفته</label>
+				<select name = "weekday" id = "weekday" class="form-control">
+					<option value = "saturday">شنبه</option>
+					<option value = "sunday">یک‌شنبه</option>
+					<option value = "monday">دوشنبه</option>
+					<option value = "tuesday">سه‌شنبه</option>
+					<option value = "wednesday">چهارشنبه</option>
+					<option value = "thursday">پنج‌شنبه</option>
+					<option value = "friday">جمعه</option>
+				</select>
+				<br>
+				<label for = "timeFrom">زمان کلاس از </label>
+				<input type = "time" name = "timeFrom" id = "timeFrom" value = "00:00" class="form-control"><br>
+				<label for = "timeTo">زمان کلاس تا </label>
+				<input type = "time" name = "timeTo" id = "timeTo" value = "00:00" class="form-control">
+				<br>
+				
+				<input type = "submit" name = "submit" value = "ارسال" class="btn btn-primary">
+			</form>
+		</main>
+		<aside></aside>
+		<footer></footer>
+		
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+	</body>
+</html>

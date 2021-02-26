@@ -1,7 +1,35 @@
+<?php
+include 'settings.php';
+include ('functions.php') ;
+$alert = '';
+if( isset( $_POST['submit'] ) ){ // اگر فرم قبلا پر شده پردازشش کن
+	
+// A. validation
+$imgSrc = 'images/image.jpg';
+// B. Insert in DB
+
+
+// 2. create insert query
+	$sql = "INSERT INTO Product (name, price, weekday, timeFrom, timeTo, imgSrc, description) 
+	VALUES('{$_POST['name']}', {$_POST['price']},'{$_POST['weekday']}', '{$_POST['timeFrom']}', '{$_POST['timeTo']}', '{$imgSrc}', '{$_POST['description']}')";
+
+$db = new DB();
+
+$result = $db -> execute( $sql );
+unset( $db );
+
+// C. success message
+//اگر با موفقیت درج شد
+if( $result )	
+	$alert = alertTemplate('با موفقیت ثبت شد!', 'success');
+
+
+}
+?>
 <!doctype html>
-<html lang = "fa"><!-- dir = "rtl" -->
+<html lang = "fa">
 	<head>
-		<title>آکادمی | تماس با ما</title>
+		<title>آکادمی | افزودن محصول</title>
 		<meta charset = "utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!--link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous"-->
@@ -14,20 +42,10 @@
 	<body class = "container">
 		<header></header>
 		<main>
-			<h1>تماس با ما</h1>
-			<form action = "contact.php" method = "post">
-				<div class="mb-3">
-					<label for = "title" class = "form-label">عنوان پیام:</label>
-					<input type = "text" id = "title" name = "title" class = "form-control">
-					<span class = "form-text">عنوان پیام الزامی است</span><br>
-				</div>
-				<div class="mb-3">
-					<label for = "body" class = "form-label">متن پیام:</label>
-					<textarea id = "body" name = "body" class = "form-control"></textarea>
-				</div>
-				<input type = "submit" value = "ارسال" class = "btn btn-primary">
-				<!--button type = "reset">پاک کردن</button-->
-			</form>
+			<?php
+				if( isset($alert) )
+					echo $alert;
+			?>
 		</main>
 		<aside></aside>
 		<footer></footer>

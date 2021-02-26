@@ -1,4 +1,6 @@
 <?php
+include 'DB.php';
+
 if( ! function_exists('alertTemplate') ){
 	function alertTemplate( $text , $type = 'error' ){
 		switch( $type ){
