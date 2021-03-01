@@ -1,0 +1,35 @@
+/*
+[lang = "fa"]			
+[lang = "en"]
+*/
+:lang(fa){
+	direction:	rtl;
+	text-align:	right;
+}
+:lang(en){
+	direction:	ltr;
+	text-align:	left;
+}
+
+.btn-primary{
+	background-color:	hsl(-10, 90%, 85%);
+	border-color:		hsl(-10, 90%, 70%);			
+}
+.btn-primary:hover{
+	background-color:	hsl(-10, 90%, 50%);
+	outline:			0;
+}
+
+.alert-danger{
+	background-color:	hsl(30, 90%, 50%);	
+}
+
+.form-control{
+	/*border-top:		0;
+	border-right:	0;
+	border-left:	0;
+	border-bottom-width:	2px;*/
+	border-width:	0px 0px 2px 0px;
+	
+	border-radius:	0;	
+}
