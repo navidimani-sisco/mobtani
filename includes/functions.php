@@ -16,7 +16,21 @@ if( ! function_exists('alertTemplate') ){
 		return $alert;	
 	}
 }
-
+if( ! function_exists('alerts') ){
+	function alerts( $text = '' , $type = 'error'){
+		static $alerts = ''; // متغیر استاتیک فقط دفعه اول مقدار اولیه میگیرد
+		if(  $text !== '' ){ // اگر پیام جدید داریم
+			$alerts .=  alertTemplate($text, $type);
+		}
+		elseif( $alerts !== '' ){
+			$result = $alerts;
+			$alerts = '';
+			return $result;
+		}
+		else
+			return false;		
+	}
+}
 
 if( ! function_exists('redirect') ){
 	function redirect( $address ){

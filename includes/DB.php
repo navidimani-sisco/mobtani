@@ -2,10 +2,11 @@
 if(! class_exists('DB')) {
 	class DB{
 		var $dbc; // class property
-		function __construct(){
+		function __construct( $selectDB = true ){
 			// تابع سازنده با ایجاد شیء از کلاس، فراخوانی می‌شود
 			$this -> connect();
-			$this -> selectDB();
+			if( $selectDB )
+				$this -> selectDB();
 			$this -> dbc -> set_charset( CHARSET );
 		}
 		
