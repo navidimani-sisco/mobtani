@@ -1,5 +1,5 @@
 <?php
-include 'settings.php';
+require 'settings.php';
 include 'functions.php';
 
 $db = new DB( false );

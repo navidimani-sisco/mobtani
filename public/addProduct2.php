@@ -5,16 +5,25 @@ $alert = '';
 if( isset( $_POST['submit'] ) ){ // اگر فرم قبلا پر شده پردازشش کن
 	
 // A. validation
-$imgSrc = 'assets/images/image.jpg';
-unset( $_POST['submit'] ); // این پارامتر درج نشود
-$_POST['imgSrc'] = $imgSrc; // تصویر محصول به پارامترها اضافه شود
-
+$_POST['imgSrc'] = 'assets/images/image.jpg';
 // B. Insert in DB
+
+
+// 2. create insert query
+	$sql = "INSERT INTO Product (name, price, weekday, timeFrom, timeTo, imgSrc, description) 
+	VALUES(:name, :price, :weekday, :timeFrom, :timeTo, :imgSrc, :description)";
+
 $db = new DB();
-Product::add( $_POST );
+
+$result = $db -> executeq( $sql, $_POST );
 unset( $db );
 
-$alerts = alerts();
+// C. success message
+//اگر با موفقیت درج شد
+if( $result )	
+	$alert = alertTemplate('با موفقیت ثبت شد!', 'success');
+
+
 }
 ?>
 <!doctype html>
@@ -34,8 +43,8 @@ $alerts = alerts();
 		<header></header>
 		<main>
 			<?php
-				if( isset($alerts) )
-					echo $alerts;
+				if( isset($alert) )
+					echo $alert;
 			?>
 		</main>
 		<aside></aside>

@@ -1,4 +1,6 @@
 <?php
+	include 'Product.php';
+	// include ...
 if(! class_exists('DB')) {
 	class DB{
 		var $dbc; // class property
@@ -30,9 +32,11 @@ if(! class_exists('DB')) {
 			}
 		}
 
-		function execute( $sql ){
+		function execute( $sql, $params = false )
+		{
 			// 3. execute query
 			$result = $this -> dbc -> query( $sql ); // mysqli_query
+
 			if( $this -> dbc -> error ){
 				$error = "
 						خطا در اجرای کوئری!
