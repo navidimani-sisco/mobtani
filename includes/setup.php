@@ -24,6 +24,7 @@ $sql = "CREATE TABLE IF NOT EXISTS message(
 		email VARCHAR(255),
 		title VARCHAR(255),
 		body TEXT,
+		status VARCHAR(20),
 		PRIMARY KEY(id)
 		)ENGINE = INNODB";
 $result = $db -> execute( $sql );
@@ -39,6 +40,7 @@ $sql = "CREATE TABLE IF NOT EXISTS product(
 		timeTo VARCHAR(30),
 		imgSrc VARCHAR(255),
 		description TEXT,
+		status VARCHAR(20),
 		PRIMARY KEY(id)
 		)ENGINE = INNODB";
 $result = $db -> execute( $sql );
@@ -46,6 +48,24 @@ if( $result )
 	alerts('جدول محصول با موفقیت ایجاد شد', 'success');
 
 
+$sql = "CREATE TABLE IF NOT EXISTS user( 
+		id INT AUTO_INCREMENT NOT NULL,
+		firstname VARCHAR(50),
+		lastname VARCHAR(50),
+		email VARCHAR(50),
+		password VARCHAR(50),
+		state VARCHAR(50),
+		city VARCHAR(50),
+		Role VARCHAR(20),
+		imgSrc VARCHAR(255),
+		status VARCHAR(20),
+		PRIMARY KEY(id)
+		)ENGINE = INNODB";
+$result = $db -> execute( $sql );
+if( $result )
+	alerts('جدول کاربر با موفقیت ایجاد شد', 'success');
+			
+			
 $alerts = alerts();
 ?>
 <!doctype html>

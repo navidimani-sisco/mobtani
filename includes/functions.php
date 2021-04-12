@@ -1,5 +1,34 @@
 <?php
-include 'DB.php';
+include 'DB/DB.php';
+
+if( ! function_exists('get_header') ){
+	function get_header($name = null, $args = array()){ // 'home'
+		if( isset( $name ) )
+			$name = "-{$name}"; // '-home'
+		include "views/templates/header{$name}.php";
+	}	
+}
+if( ! function_exists('get_sidebar') ){
+	function get_sidebar($name = null, $args = array()){ // 'home'
+		if( isset( $name ) )
+			$name = "-{$name}"; // '-home'
+		include "views/templates/sidebar{$name}.php";
+	}	
+}
+if( ! function_exists('get_footer') ){
+	function get_footer($name = null, $args = array()){ // 'home'
+		if( isset( $name ) )
+			$name = "-{$name}"; // '-home'
+		include "views/templates/footer{$name}.php";
+	}	
+}
+if( ! function_exists('get_template_part') ){
+	function get_template_part($slug, $name = null, $args = array()){ // 'home'
+		if( isset( $name ) )
+			$name = "-{$name}"; // '-home'
+		include "views/templates/{$slug}{$name}.php";
+	}	
+}
 
 if( ! function_exists('alertTemplate') ){
 	function alertTemplate( $text , $type = 'error' ){
