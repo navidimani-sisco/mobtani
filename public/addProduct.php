@@ -1,7 +1,7 @@
 <?php
 include '../includes/settings.php';
 include ('../includes/functions.php') ;
-$alert = '';
+
 if( isset( $_POST['submit'] ) ){ // اگر فرم قبلا پر شده پردازشش کن
 	
 // A. validation
