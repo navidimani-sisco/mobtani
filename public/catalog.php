@@ -1,6 +1,5 @@
 <?php
-	include '../includes/settings.php';
-	include '../includes/functions.php';
+	include '__php__.php';
 	
 	$db = new DB();
 	$table = Product::find();
@@ -8,4 +7,5 @@
 	
 	$alerts = alerts();
 	
-	include '../includes/views/catalog.php';
+	view('catalog', null, ['table' => $table], $alerts);
+	//include 'views/catalog.php';

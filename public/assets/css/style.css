@@ -38,3 +38,6 @@ aside{
 	background:		silver;
 	
 }
+nav.sticky-top{
+	background:		hsla(0, 0%, 80%, 0.9);
+}
