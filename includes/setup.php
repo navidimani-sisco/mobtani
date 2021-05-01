@@ -6,7 +6,7 @@ $db = new DB( false );
 if( ! $softSetup ) {
 	$sql = "DROP DATABASE IF EXISTS {$dbName}";
 	$db->execute($sql);
-	alerts("دیتابیس {$dbName} و جداول آن حذف شد", 'success');
+	Alert::alerts("دیتابیس {$dbName} و جداول آن حذف شد", 'success');
 } // در غیر اینصورت دیتابیس فعلی را حفظ کن و جداول جدید را بیافزا
 
 $sql = "CREATE DATABASE IF NOT EXISTS {$dbName}
@@ -14,7 +14,7 @@ $sql = "CREATE DATABASE IF NOT EXISTS {$dbName}
 		COLLATE {$collate}";
 $result = $db -> execute( $sql );
 if( $result )
-	alerts('دیتابیس {$dbName} با موفقیت ایجاد شد', 'success');
+	Alert::alerts('دیتابیس {$dbName} با موفقیت ایجاد شد', 'success');
 
 unset( $db );
 $db = new DB(); // همراه با انتخاب دیتابیس
@@ -29,7 +29,7 @@ $sql = "CREATE TABLE IF NOT EXISTS message(
 		)ENGINE = INNODB";
 $result = $db -> execute( $sql );
 if( $result )
-	alerts('جدول پیام با موفقیت ایجاد شد', 'success');
+	Alert::alerts('جدول پیام با موفقیت ایجاد شد', 'success');
 
 $sql = "CREATE TABLE IF NOT EXISTS product(
 		id INT AUTO_INCREMENT NOT NULL,
@@ -45,7 +45,7 @@ $sql = "CREATE TABLE IF NOT EXISTS product(
 		)ENGINE = INNODB";
 $result = $db -> execute( $sql );
 if( $result )
-	alerts('جدول محصول با موفقیت ایجاد شد', 'success');
+	Alert::alerts('جدول محصول با موفقیت ایجاد شد', 'success');
 
 
 $sql = "CREATE TABLE IF NOT EXISTS user( 
@@ -53,7 +53,7 @@ $sql = "CREATE TABLE IF NOT EXISTS user(
 		firstname VARCHAR(50),
 		lastname VARCHAR(50),
 		email VARCHAR(50),
-		password VARCHAR(50),
+		passwordHash VARCHAR(255),
 		state VARCHAR(50),
 		city VARCHAR(50),
 		Role VARCHAR(20),
@@ -63,10 +63,10 @@ $sql = "CREATE TABLE IF NOT EXISTS user(
 		)ENGINE = INNODB";
 $result = $db -> execute( $sql );
 if( $result )
-	alerts('جدول کاربر با موفقیت ایجاد شد', 'success');
+	Alert::alerts('جدول کاربر با موفقیت ایجاد شد', 'success');
 			
 			
-$alerts = alerts();
+$alerts = Alert::alerts();
 ?>
 <!doctype html>
 <html lang = "fa">

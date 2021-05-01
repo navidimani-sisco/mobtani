@@ -11,6 +11,9 @@
 		<main class = "container col-12 col-lg-8">
 			<?php
 				//main();
+				if( isset($alerts) )
+					echo $alerts;
+				
 				if( isset($main) )
 					eval( $main );
 			?>

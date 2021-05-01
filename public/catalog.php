@@ -5,7 +5,7 @@
 	$table = Product::find();
 	unset( $db );
 	
-	$alerts = alerts();
+	$alerts = Alert::alerts();
 	
 	view('catalog', null, ['table' => $table], $alerts);
 	//include 'views/catalog.php';

@@ -22,3 +22,9 @@ $charset =	CHARSET;
 $collate =	COLLATE;
 
 $softSetup = false;
+
+
+if( ! defined('LOGIN_DEADLINE') )
+	define( 'LOGIN_DEADLINE', 30 );  // days
+if( ! defined('ACTIVITY_DEADLINE') )
+	define( 'ACTIVITY_DEADLINE', 10 );  // minutes

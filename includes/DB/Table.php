@@ -33,8 +33,8 @@
 				// C. success message
 				//اگر با موفقیت درج شد
 				if( $result )
-					alerts("{$tableName} با موفقیت ثبت شد!", 'success');
-
+					Alert::alerts("{$tableName} با موفقیت ثبت شد!", 'success');
+				return $result;
 			}
 			static public function update( $params ){
 				$columnValueString = self::columnValueList( $params );
