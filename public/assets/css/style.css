@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lateef:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Markazi+Text:wght@500&display=swap');
 /*
 [lang = "fa"]			
 [lang = "en"]
@@ -5,6 +7,8 @@
 :lang(fa){
 	direction:	rtl;
 	text-align:	right;
+	font-family:	'Lateef', cursive;
+	//font-family:	'Markazi Text', cursive;
 }
 :lang(en){
 	direction:	ltr;
@@ -28,10 +32,10 @@
 	/*border-top:		0;
 	border-right:	0;
 	border-left:	0;
-	border-bottom-width:	2px;*/
-	border-width:	0px 0px 2px 0px;
+	border-bottom-width:	2px;
+	border-width:	0px 0px 2px 0px;*/
 	
-	border-radius:	0;	
+	border-radius:	4px;	
 }
 
 aside{
