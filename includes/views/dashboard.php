@@ -2,4 +2,4 @@
 $title = 'داشبورد';
 $main = '';
 
-include 'templates/master.php';
+include 'templates/panel/master.php';

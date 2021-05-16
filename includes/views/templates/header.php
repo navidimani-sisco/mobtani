@@ -2,7 +2,7 @@
 		<header class = 'container-fluid'>
 			<section class = 'row'>
 				<section class = 'col-2' id = "logo">
-					<img src = '<?php assets('images/logo.png');?>' class = "img-fluid">
+					<img src = '<?php echo assets('images/logo.png');?>' class = "img-fluid">
 				</section>
 				<section class = 'col align-self-center'>
 					<h1>آکادمی راست راه</h1>

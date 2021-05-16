@@ -2,6 +2,7 @@
 	include 'Table.php';
 	include 'Product.php';
 	include 'User.php';
+	include 'Role.php';
 	// include ...
 if(! class_exists('DB')) {
 	class DB{

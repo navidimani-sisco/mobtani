@@ -75,6 +75,19 @@
 				$table = $GLOBALS['db'] -> execute( $sql );
 				return $table;
 			}
+			
+			static public function join($where = 'TRUE', $order = 'id DESC', $count = 10000, $offset = 0, $joinedTable = 'User'){
+				$tableName = static::class; // self::class // __CLASS__
+				$sql = "SELECT * FROM {$tableName}, {$joinedTable}
+						WHERE {$joinedTable}.{$tableName}id = {$tableName}.id
+						AND {$where} 
+						AND {$tableName}.status != 'deleted'
+						AND {$joinedTable}.status != 'deleted'
+						ORDER BY {$tableName}.{$order}
+						LIMIT {$offset}, {$count}";
+				$table = $GLOBALS['db'] -> execute( $sql );
+				return $table;
+			}
 		}
 	}
 ?>
