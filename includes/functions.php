@@ -2,6 +2,9 @@
 include 'alert.php';
 include 'DB/DB.php';
 include 'security/Authentication.php';
+include 'security/Authorization.php';
+include 'security/Validation.php';
+include 'Form.php';
 /*
 $postfixes = ['header', 'sidebar', 'footer'];
 foreach($postfixes as $postfix){
@@ -21,18 +24,18 @@ foreach($postfixes as $postfix){
 }
 */
 if( ! function_exists('get_header') ){
-	function get_header($name = null, $args = array()){ // 'home'
-		get_template_part('header', $name, $args);
+	function get_header($name = null, $path = '', $args = array()){ // 'home'
+		get_template_part($path . 'header', $name, $args);
 	}	
 }
 if( ! function_exists('get_sidebar') ){
-	function get_sidebar($name = null, $args = array()){ // 'home'
-		get_template_part('sidebar', $name, $args);
+	function get_sidebar($name = null, $path = '', $args = array()){ // 'home'
+		get_template_part($path . 'sidebar', $name, $args);
 	}	
 }
 if( ! function_exists('get_footer') ){
-	function get_footer($name = null, $args = array()){ // 'home'
-		get_template_part('footer', $name, $args);
+	function get_footer($name = null, $path = '', $args = array()){ // 'home'
+		get_template_part($path . 'footer', $name, $args);
 	}	
 }
 
@@ -42,6 +45,8 @@ if( ! function_exists('get_template_part') ){
 			$name = "-{$name}"; // '-home'
 		$__pathToTemplate = "views/templates/{$slug}{$name}.php";
 		
+		if( ! isset($args) )
+			$args = array();
 		$args = safeScript($args);
 		//extract($args);
 		foreach($args as $key => $value)
@@ -68,7 +73,7 @@ if( ! function_exists('view') ){
 		
 		//$args = safeScript($args);
 		//extract($args);
-		//if( isset($args) )
+		if( isset($args) ) // اگر نال نیست
 			foreach($args as $key => $value){
 				$$key = $value;
 			}

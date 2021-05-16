@@ -1,6 +1,5 @@
 <?php
-require 'settings.php';
-include 'functions.php';
+require '__php__.php';
 
 $db = new DB( false );
 if( ! $softSetup ) {
@@ -19,7 +18,7 @@ if( $result )
 unset( $db );
 $db = new DB(); // همراه با انتخاب دیتابیس
 
-$sql = "CREATE TABLE IF NOT EXISTS message(
+$sql = "CREATE TABLE IF NOT EXISTS Message(
 		id INT AUTO_INCREMENT NOT NULL,
 		email VARCHAR(255),
 		title VARCHAR(255),
@@ -31,7 +30,7 @@ $result = $db -> execute( $sql );
 if( $result )
 	Alert::alerts('جدول پیام با موفقیت ایجاد شد', 'success');
 
-$sql = "CREATE TABLE IF NOT EXISTS product(
+$sql = "CREATE TABLE IF NOT EXISTS Product(
 		id INT AUTO_INCREMENT NOT NULL,
 		name VARCHAR(30),
 		price INT,
@@ -48,7 +47,7 @@ if( $result )
 	Alert::alerts('جدول محصول با موفقیت ایجاد شد', 'success');
 
 
-$sql = "CREATE TABLE IF NOT EXISTS user( 
+$sql = "CREATE TABLE IF NOT EXISTS User( 
 		id INT AUTO_INCREMENT NOT NULL,
 		firstname VARCHAR(50),
 		lastname VARCHAR(50),
@@ -56,7 +55,7 @@ $sql = "CREATE TABLE IF NOT EXISTS user(
 		passwordHash VARCHAR(255),
 		state VARCHAR(50),
 		city VARCHAR(50),
-		Role VARCHAR(20),
+		Roleid INT,
 		imgSrc VARCHAR(255),
 		status VARCHAR(20),
 		PRIMARY KEY(id)
@@ -64,8 +63,64 @@ $sql = "CREATE TABLE IF NOT EXISTS user(
 $result = $db -> execute( $sql );
 if( $result )
 	Alert::alerts('جدول کاربر با موفقیت ایجاد شد', 'success');
-			
-			
+
+if( ! $softSetup ) {	
+	$parameters = array(
+		'firstname'		=> 'admin',
+		'lastname'		=> 'admin',
+		'email'			=> 'admin@example.com',
+		'passwordHash'	=> password_hash('123', PASSWORD_DEFAULT),
+		'imgSrc'		=> assets('images/male-profile.jpg'),
+		'roleid'		=> 1
+	);
+	User :: add( $parameters );
+}		
+	
+$sql = "CREATE TABLE IF NOT EXISTS Role( 
+		id INT AUTO_INCREMENT NOT NULL,
+		role VARCHAR(15),
+		ProductAdd BOOLEAN DEFAULT 0,
+		ProductEdit BOOLEAN DEFAULT 0,
+		ProductDelete BOOLEAN DEFAULT 0,
+		ProductDetails BOOLEAN DEFAULT 0,
+		ProductEditOther BOOLEAN DEFAULT 0,
+		ProductDeleteOther BOOLEAN DEFAULT 0,
+		ProductDetailsOther BOOLEAN DEFAULT 0,
+		UserAdd BOOLEAN DEFAULT 0,
+		UserEdit BOOLEAN DEFAULT 0,
+		UserDelete BOOLEAN DEFAULT 0,
+		UserDetails BOOLEAN DEFAULT 0,
+		UserEditOther BOOLEAN DEFAULT 0,
+		UserDeleteOther BOOLEAN DEFAULT 0,
+		UserDetailsOther BOOLEAN DEFAULT 0,
+		status VARCHAR(20),
+		PRIMARY KEY(id)
+		)ENGINE = INNODB";
+$result = $db -> execute( $sql );
+if( $result )
+	Alert::alerts('جدول نقش با موفقیت ایجاد شد', 'success');
+
+if( ! $softSetup ) {	
+	$parameters = array(
+		'id'			=> 1,
+		'role'			=> 'superAdmin',
+		'ProductAdd'	=> TRUE,
+		'ProductEdit'	=> 1,
+		'UserAdd'		=> 1,
+		'UserEdit'		=> 1
+	);
+	Role :: add( $parameters );
+	$parameters = array(
+		'id'			=> 2,
+		'role'			=> 'normal',
+		'ProductAdd'	=> TRUE,
+		'ProductEdit'	=> 1,
+		'UserAdd'		=> 1,
+		'UserEdit'		=> 1,
+		'UserEditOther' => 0
+	);
+	Role :: add( $parameters );
+}
 $alerts = Alert::alerts();
 ?>
 <!doctype html>
