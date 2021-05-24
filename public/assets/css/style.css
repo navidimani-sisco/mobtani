@@ -45,3 +45,20 @@ aside{
 nav.sticky-top{
 	background:		hsla(0, 0%, 80%, 0.9);
 }
+
+/* validation */
+:focus:invalid{
+	//outline-color:		hsl(-10, 90%, 70%);
+	outline:			none;
+	box-shadow:			0;
+	border-color:		hsl(-10, 90%, 70%);	
+}
+:focus:valid:not( [type = "submit"] ){
+	//outline-color:		hsl(120, 90%, 50%);
+	outline:			none;
+	box-shadow:			0;
+	border-color:		hsl(120, 90%, 50%);
+}
+:required{
+	//background:
+}

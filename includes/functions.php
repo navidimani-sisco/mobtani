@@ -4,7 +4,7 @@ include 'DB/DB.php';
 include 'security/Authentication.php';
 include 'security/Authorization.php';
 include 'security/Validation.php';
-include 'Form.php';
+include 'form/Form.php';
 /*
 $postfixes = ['header', 'sidebar', 'footer'];
 foreach($postfixes as $postfix){

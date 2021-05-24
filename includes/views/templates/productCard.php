@@ -22,10 +22,16 @@
 				</section>
 			</section>
 			<footer class = 'card-footer'>
-				<span class = 'col'>
-					<a href = 'editProduct.php?id=<?php echo $id;?>' class = 'btn btn-primary'>ویرایش</a>
-					<a href = 'deleteProduct.php?id=<?php echo $id;?>' class = 'btn btn-danger'>حذف</a>
-				</span>
+				<section class = "row justify-content-between">
+					<span class = 'col'>
+						<a href = 'editProduct.php?id=<?php echo $id;?>' class = 'btn btn-primary'>ویرایش</a>
+						<a href = 'deleteProduct.php?id=<?php echo $id;?>' class = 'btn btn-danger'>حذف</a>
+					</span>
+					<span class = 'col text-end'>
+						<a href = 'likeProduct.php?id=<?php echo $id;?>' class = 'btn fa-lg fas fa-heart' target = '_blank'></a>
+						<a href = 'saveProduct.php?id=<?php echo $id;?>' class = 'btn fa-lg far fa-bookmark' target = '_blank'></a>					
+					</span>
+				<section>
 			</footer>
 		</article>
 	</section>
