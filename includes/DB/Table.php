@@ -49,7 +49,7 @@
 				// C. success message
 				//اگر با موفقیت درج شد
 				if( $result ){
-					alerts("{$tableName} با موفقیت ویرایش شد!", 'success');
+					Alert::alerts("{$tableName} با موفقیت ویرایش شد!", 'success');
 				}
 			}
 			static public function delete($id){
@@ -63,7 +63,7 @@
 				// C. success message
 				//اگر با موفقیت درج شد
 				//if( $result ){
-					alerts("{$tableName} با موفقیت حذف شد!", 'success');
+					Alert::alerts("{$tableName} با موفقیت حذف شد!", 'success');
 				//}
 			}
 			static public function find($where = 'TRUE', $order = 'id DESC', $count = 10000, $offset = 0){

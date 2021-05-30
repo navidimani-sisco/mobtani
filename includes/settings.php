@@ -21,7 +21,7 @@ $dbName =	DBNAME;
 $charset =	CHARSET;
 $collate =	COLLATE;
 
-$softSetup = false;
+$softSetup = true;
 
 
 if( ! defined('LOGIN_DEADLINE') )

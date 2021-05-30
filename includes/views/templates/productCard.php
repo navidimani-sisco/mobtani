@@ -27,8 +27,10 @@
 						<a href = 'editProduct.php?id=<?php echo $id;?>' class = 'btn btn-primary'>ویرایش</a>
 						<a href = 'deleteProduct.php?id=<?php echo $id;?>' class = 'btn btn-danger'>حذف</a>
 					</span>
-					<span class = 'col text-end'>
-						<a href = 'likeProduct.php?id=<?php echo $id;?>' class = 'btn fa-lg fas fa-heart' target = '_blank'></a>
+					<span class = 'col text-end align-self-center'>
+						<a href = 'likeProduct.php?id=<?php echo $id;?>' class = 'btn fa-lg <?php
+						if( isset($like) ) echo 'fas';
+						else echo 'far'; ?> fa-heart'></a>
 						<a href = 'saveProduct.php?id=<?php echo $id;?>' class = 'btn fa-lg far fa-bookmark' target = '_blank'></a>					
 					</span>
 				<section>

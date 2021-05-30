@@ -62,3 +62,10 @@ nav.sticky-top{
 :required{
 	//background:
 }
+
+.fa-heart.far:active{
+	color:			red;
+}
+.fa-heart.fas{
+	color:			red;	
+}

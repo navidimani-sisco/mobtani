@@ -121,6 +121,19 @@ if( ! $softSetup ) {
 	);
 	Role :: add( $parameters );
 }
+
+
+$sql = "CREATE TABLE IF NOT EXISTS LikeProduct( 
+		id INT AUTO_INCREMENT NOT NULL,
+		Userid INT,
+		Productid INT,		
+		status VARCHAR(20),
+		PRIMARY KEY(id)
+		)ENGINE = INNODB";
+$result = $db -> execute( $sql );
+if( $result )
+	Alert::alerts('جدول لایک با موفقیت ایجاد شد', 'success');
+
 $alerts = Alert::alerts();
 ?>
 <!doctype html>

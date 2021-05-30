@@ -3,6 +3,7 @@
 	include 'Product.php';
 	include 'User.php';
 	include 'Role.php';
+	include 'LikeProduct.php';
 	// include ...
 if(! class_exists('DB')) {
 	class DB{

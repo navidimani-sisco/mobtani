@@ -21,3 +21,26 @@ function toggleVisibility(){
 	}
 	
 }
+
+var likeButtonList = document.querySelectorAll('.fa-heart');
+//for(i = 0; i < likeButtonList.length; i++)
+for(item of likeButtonList)
+	item.addEventListener('click', toggleLike);
+
+function toggleLike(){
+	if( this.classList.contains('far') ) {		
+		this.classList.remove('far');
+		this.classList.add('fas');
+	}
+	else if( this.classList.contains('fas') ){		
+		this.classList.remove('fas');
+		this.classList.add('far');
+		
+	}
+}
+
+
+
+
+
+	
