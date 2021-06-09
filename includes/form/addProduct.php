@@ -2,7 +2,7 @@
 	if(! class_exists('AddProduct')) {
 		class AddProduct extends Form {
 			public function __construct( $parameters = array() ){
-				$allowedInputs = ['name', 'price', 'weekday', 'description', 'timeFrom', 'timeTo'];
+				$allowedInputs = ['name', 'price', 'productPicture', 'weekday', 'timeFrom', 'timeTo', 'description'];
 				foreach( $allowedInputs as $function ){
 					if( isset( $parameters[$function] ) ){
 						$value = $parameters[$function];
@@ -24,7 +24,7 @@
 				*/
 			}
 			public function name( $value = '' ){
-				$this -> textbox("نام دوره", "name", $value );			
+				$this -> textbox("نام دوره", "name", $value, null, null, 'required' );			
 			}
 			public function price( $value = 0 ){
 				$error = null;
@@ -32,7 +32,7 @@
 					$error = 'مقدار قیمت نامعتبر است!';
 					$this -> valid = false;
 				}
-				$this -> number("قیمت", "price", $value, 'عدد مثبت با ضرایبی از 1000', $error, 'requird | min = "0" | step = "1000"');	
+				$this -> number("قیمت", "price", $value, 'عدد مثبت با ضرایبی از 1000', $error, 'required | min = "0" | step = "1000"');	
 			}
 			public function weekday( $value = 'monday' ){
 				$values = [
@@ -47,7 +47,7 @@
 				$this -> select("روز هفته", "weekday", $value, null, null, $values);				
 			}
 			public function description( $value = '' ){
-				$this -> bigText("توضیحات", "description", $value);		
+				$this -> bigText("توضیحات", "description", $value, null, 'required');		
 			}
 			public function productPicture(){
 				$this -> image("تصویر محصول", "productPicture");

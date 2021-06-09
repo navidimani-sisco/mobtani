@@ -17,6 +17,7 @@ if( isset( $_GET['id'] ) &&
 		// آن را از لایک در بیار
 		$row = $table[0];
 		LikeProduct :: delete( $row['id'] );
+		echo 'false';
 	}
 	else{
 		// محصول را لایک کن
@@ -27,6 +28,7 @@ if( isset( $_GET['id'] ) &&
 
 		// B. Insert in DB
 		LikeProduct :: add( $parameters );
+		echo 'true';
 	}
 	unset( $db );		
 }
@@ -34,4 +36,4 @@ else {
 	Alert::alerts('دسترسی غیر مجاز!');
 	redirect('dashboard.php');
 }
-redirect('catalog.php'); // با ایجکس نیاز نیست
+//redirect('catalog.php'); // با ایجکس نیاز نیست

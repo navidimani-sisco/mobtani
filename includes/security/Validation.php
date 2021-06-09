@@ -22,5 +22,23 @@ if(! class_exists('Validation')) {
 			AND 
 			intval($string) % $step  === 0;
 		}
+		
+		public static function image( $path ){
+			if( getimagesize( $path ) )
+				return true;
+			else
+				return false;
+			/*if( strpos( $this -> fileInformationArray['type'], 'image/') !== 0 ){
+				return false;
+			}
+			else return true;
+			*/
+		}
+		public static function fileSizeMax( $size, $max = 1000000 ){
+			return $size < $max;
+		}
+		
+		
+		
 	}
 }

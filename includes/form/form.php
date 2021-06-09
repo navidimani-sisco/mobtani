@@ -40,6 +40,8 @@ EOT;
 				$name = $type;
 			if( ! isset($label) )
 				$label = $name;
+			$optionsArray = explode( '|', $options );
+			$options = implode(' ', $optionsArray);
 			$result = <<< EOT
 					<label for = "{$name}" class = "form-label">{$label}</label><br>
 					<textarea name = "{$name}" id = "{$name}" class = "form-control" {$options}>{$value}</textarea>
@@ -111,8 +113,11 @@ EOT;
 			$this -> text('time', $label, $name, $value, $helper, $options);
 		}
 		
-		public function image( $label = null, $name = null, $value = '', $helper = null, $options = '' ){
-			$this -> text('file', $label, $name, $value, $helper, $options);
+		public function image( $label = null, $name = null, $value = '', $helper = null, $options = 'accept = "image/*"' ){
+			//if( ! isset($options) )
+				//$options = 'image/*';
+			$error = null;
+			$this -> text('file', $label, $name, $value, $helper, $error, $options);
 		} // accept = 'image/jpeg, image/gif, ...' | 'image/*'
 		
 		
@@ -127,7 +132,7 @@ EOT;
 		public function __toString(){
 			$result = <<< EOT
 				
-				<form action = "" method = "post"  enctype = "multipart/form-data">
+				<form action = "" method = "post" enctype = "multipart/form-data">
 EOT;
 				$result .= self :: csrf();
 				foreach($this -> inputArray as $inputString)

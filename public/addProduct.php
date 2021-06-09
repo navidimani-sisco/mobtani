@@ -6,9 +6,16 @@ if( isset( $_POST['submit'] ) ){ // اگر فرم قبلا پر شده پردا�
 	if( Validation :: tokenCheck( $_POST['csrf_token'] ) ) {
 		
 		// A. validation
-		$imgSrc = assets('images/image.jpg');
+		$imgSrc = 'image.jpg';
 		unset( $parameters['submit'] ); // این پارامتر درج نشود
 		unset( $parameters['csrf_token'] );
+		
+		$image = new upload( $_FILES['productPicture'] );
+		if( $image -> Validator() )
+			$imgSrc = $image -> permanent();
+		
+		var_dump( $_FILES );
+		exit();
 		$parameters['imgSrc'] = $imgSrc; // تصویر محصول به پارامترها اضافه شود
 
 		$form = new AddProduct( $parameters );
