@@ -26,9 +26,9 @@ if(! class_exists('Authentication')) {
 		}
 		
 		static public function autoLogout(){
-			if( self :: check() ){
+			if( self :: check() ){ // کاربر لاگین است
 				if( time() - $_SESSION['lastLogin'] > LOGIN_DEADLINE * 24 * 60 * 60 ){ // 30 days
-					Alert::alerts('با ورود مجدد به ما کمک کتید امنیت شما را تامین کنیم!', 'warning');
+					Alert::alerts('با ورود مجدد به ما کمک کنید امنیت شما را تامین کنیم!', 'warning');
 					$_SESSION['redirect'] = $_SERVER['REQUEST_URI'];
 					self :: logout();
 				}
@@ -37,9 +37,9 @@ if(! class_exists('Authentication')) {
 					Alert::alerts('مدتی غیرفعال بودید، لطفا مجددا وارد شوید!', 'warning');
 					$_SESSION['redirect'] = $_SERVER['REQUEST_URI'];
 					self :: logout();
-				}	
-				$_SESSION['lastActivity'] = time();
+				}
 			}
+			$_SESSION['lastActivity'] = time();
 		}
 	}
 }
